@@ -11,13 +11,6 @@ const ScanPrescription = lazy(() => import('./features/prescriptions/scan-prescr
 const Reminders = lazy(() => import('./features/reminders/reminders'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
-// Pharmacy components
-const Pharmacies = lazy(() => import('./features/pharmacy/pharmacies'));
-const PharmacyDetail = lazy(() => import('./features/pharmacy/pharmacy-detail'));
-const PharmacyOrder = lazy(() => import('./features/pharmacy/pharmacy-order'));
-const PharmacyOrders = lazy(() => import('./features/pharmacy/pharmacy-orders'));
-const PharmacyOrderDetail = lazy(() => import('./features/pharmacy/pharmacy-order-detail'));
-
 // Onboarding components
 const SplashScreen = lazy(() => import('./features/onboarding/splash-screen'));
 const LanguageSelection = lazy(() => import('./features/onboarding/language-selection'));
@@ -47,14 +40,6 @@ const AppRoutes = () => {
         <Route path="/prescriptions" component={Prescriptions} />
         <Route path="/scan" component={ScanPrescription} />
         <Route path="/reminders" component={Reminders} />
-        
-        {/* Pharmacy routes */}
-        <Route path="/pharmacies" component={Pharmacies} />
-        <Route path="/pharmacies/:id" component={PharmacyDetail} />
-        <Route path="/pharmacies/:id/order" component={PharmacyOrder} />
-        <Route path="/pharmacy-orders" component={PharmacyOrders} />
-        <Route path="/pharmacy-orders/:id" component={PharmacyOrderDetail} />
-        
         <Route component={NotFound} />
       </Switch>
     </Suspense>

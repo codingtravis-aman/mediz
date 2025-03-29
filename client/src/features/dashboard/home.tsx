@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Camera, Pill, Bell, FileText, Store, ShoppingBag } from 'lucide-react';
+import { Camera, Pill, Bell, FileText } from 'lucide-react';
 import Header from '../../common/layouts/header';
 import BottomNavigation from '../../common/ui/bottom-navigation';
 import MedicationReminder from '../../features/medications/medication-reminder';
@@ -224,93 +224,6 @@ const Home: FC = () => {
                 <p className="text-sm text-gray-500">You have no medication reminders for today</p>
               </div>
             )}
-          </div>
-          
-          {/* Nearby Pharmacies */}
-          <div className="bg-white rounded-2xl shadow-md p-5 mb-6 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-400/10 to-emerald-400/10 rounded-bl-full -z-10"></div>
-            <div className="flex justify-between items-center mb-5">
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center mr-3 shadow-md">
-                  <Store className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-800 text-lg">Nearby Pharmacies</h3>
-                  <p className="text-xs text-gray-500">Order medicines from local pharmacies</p>
-                </div>
-              </div>
-              <Link href="/pharmacies">
-                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 text-white text-xs font-medium cursor-pointer hover:shadow-lg transition-shadow">
-                  View All
-                </div>
-              </Link>
-            </div>
-
-            <div className="space-y-3">
-              <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-4 border border-teal-100 group hover:shadow-md transition-shadow">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center mr-3 text-white shadow-md group-hover:scale-110 transition-transform">
-                      <Store className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800">Apollo Pharmacy</h4>
-                      <div className="flex items-center mt-1">
-                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-teal-500 mr-1"></div>
-                        <p className="text-xs text-gray-500">
-                          1.2 km away • Open now
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <Link href="/pharmacies">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white cursor-pointer shadow-md hover:shadow-lg transition-shadow group-hover:scale-105 transform-gpu duration-300">
-                      <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </div>
-                  </Link>
-                </div>
-                <div className="mt-3 flex items-center">
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center mr-2 text-white">
-                    <ShoppingBag className="h-3 w-3" />
-                  </div>
-                  <p className="text-xs text-teal-600 font-medium">Free delivery on orders over ₹200</p>
-                </div>
-              </div>
-              
-              <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-4 border border-teal-100 group hover:shadow-md transition-shadow">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center mr-3 text-white shadow-md group-hover:scale-110 transition-transform">
-                      <Store className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800">MedPlus</h4>
-                      <div className="flex items-center mt-1">
-                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-teal-500 mr-1"></div>
-                        <p className="text-xs text-gray-500">
-                          2.5 km away • Open until 10 PM
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <Link href="/pharmacies">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white cursor-pointer shadow-md hover:shadow-lg transition-shadow group-hover:scale-105 transform-gpu duration-300">
-                      <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </div>
-                  </Link>
-                </div>
-                <div className="mt-3 flex items-center">
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center mr-2 text-white">
-                    <ShoppingBag className="h-3 w-3" />
-                  </div>
-                  <p className="text-xs text-teal-600 font-medium">30 min delivery • 10% off on first order</p>
-                </div>
-              </div>
-            </div>
           </div>
           
           {/* Recent Prescriptions */}

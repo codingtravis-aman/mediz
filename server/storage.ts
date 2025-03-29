@@ -1,15 +1,11 @@
 import {
   users, prescriptions, medications, reminders, medicationLogs, medicineInfo,
-  pharmacies, pharmacyOrders, pharmacyOrderItems,
   type User, type InsertUser,
   type Prescription, type InsertPrescription,
   type Medication, type InsertMedication,
   type Reminder, type InsertReminder,
   type MedicationLog, type InsertMedicationLog,
-  type MedicineInfo, type InsertMedicineInfo,
-  type Pharmacy, type InsertPharmacy,
-  type PharmacyOrder, type InsertPharmacyOrder,
-  type PharmacyOrderItem, type InsertPharmacyOrderItem
+  type MedicineInfo, type InsertMedicineInfo
 } from "@shared/schema";
 
 export interface IStorage {
@@ -46,20 +42,6 @@ export interface IStorage {
   // Medicine Info operations
   getMedicineInfo(name: string): Promise<MedicineInfo | undefined>;
   searchMedicineInfo(term: string): Promise<MedicineInfo[]>;
-  
-  // Pharmacy operations
-  getPharmacies(): Promise<Pharmacy[]>;
-  getPharmacy(id: number): Promise<Pharmacy | undefined>;
-  searchPharmacies(query: string, location?: { lat: number, lng: number }): Promise<Pharmacy[]>;
-  createPharmacy(pharmacy: InsertPharmacy): Promise<Pharmacy>;
-  updatePharmacy(id: number, data: Partial<Pharmacy>): Promise<Pharmacy | undefined>;
-  
-  // Pharmacy Order operations
-  getPharmacyOrders(userId: number): Promise<PharmacyOrder[]>;
-  getPharmacyOrder(id: number): Promise<PharmacyOrder | undefined>;
-  createPharmacyOrder(order: InsertPharmacyOrder, items: InsertPharmacyOrderItem[]): Promise<PharmacyOrder>;
-  updatePharmacyOrderStatus(id: number, status: string, paymentStatus?: string): Promise<PharmacyOrder | undefined>;
-  getPharmacyOrderItems(orderId: number): Promise<PharmacyOrderItem[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -69,9 +51,6 @@ export class MemStorage implements IStorage {
   private reminders: Map<number, Reminder>;
   private medicationLogs: Map<number, MedicationLog>;
   private medicineInfo: Map<number, MedicineInfo>;
-  private pharmacies: Map<number, Pharmacy>;
-  private pharmacyOrders: Map<number, PharmacyOrder>;
-  private pharmacyOrderItems: Map<number, PharmacyOrderItem>;
   
   private userId: number = 1;
   private prescriptionId: number = 1;
@@ -79,9 +58,6 @@ export class MemStorage implements IStorage {
   private reminderId: number = 1;
   private medicationLogId: number = 1;
   private medicineInfoId: number = 1;
-  private pharmacyId: number = 1;
-  private pharmacyOrderId: number = 1;
-  private pharmacyOrderItemId: number = 1;
 
   constructor() {
     this.users = new Map();
@@ -90,15 +66,9 @@ export class MemStorage implements IStorage {
     this.reminders = new Map();
     this.medicationLogs = new Map();
     this.medicineInfo = new Map();
-    this.pharmacies = new Map();
-    this.pharmacyOrders = new Map();
-    this.pharmacyOrderItems = new Map();
 
     // Adding some sample medicine info
     this.seedMedicineInfo();
-    
-    // Adding some sample pharmacies
-    this.seedPharmacies();
   }
 
   // User operations
@@ -275,125 +245,6 @@ export class MemStorage implements IStorage {
     );
   }
 
-  // Pharmacy operations
-  async getPharmacies(): Promise<Pharmacy[]> {
-    return Array.from(this.pharmacies.values());
-  }
-
-  async getPharmacy(id: number): Promise<Pharmacy | undefined> {
-    return this.pharmacies.get(id);
-  }
-
-  async searchPharmacies(query: string, location?: { lat: number, lng: number }): Promise<Pharmacy[]> {
-    const searchTerm = query.toLowerCase();
-    const pharmacies = Array.from(this.pharmacies.values()).filter(
-      (pharmacy) => pharmacy.name.toLowerCase().includes(searchTerm) || 
-                    pharmacy.address.toLowerCase().includes(searchTerm) ||
-                    pharmacy.city.toLowerCase().includes(searchTerm)
-    );
-
-    // If location is provided, sort by distance (simplified calculation)
-    if (location) {
-      return pharmacies.sort((a, b) => {
-        if (a.latitude && a.longitude && b.latitude && b.longitude) {
-          const distA = Math.sqrt(
-            Math.pow(a.latitude - location.lat, 2) + 
-            Math.pow(a.longitude - location.lng, 2)
-          );
-          const distB = Math.sqrt(
-            Math.pow(b.latitude - location.lat, 2) + 
-            Math.pow(b.longitude - location.lng, 2)
-          );
-          return distA - distB;
-        }
-        return 0;
-      });
-    }
-
-    return pharmacies;
-  }
-
-  async createPharmacy(pharmacy: InsertPharmacy): Promise<Pharmacy> {
-    const id = this.pharmacyId++;
-    const newPharmacy: Pharmacy = { ...pharmacy, id };
-    this.pharmacies.set(id, newPharmacy);
-    return newPharmacy;
-  }
-
-  async updatePharmacy(id: number, data: Partial<Pharmacy>): Promise<Pharmacy | undefined> {
-    const pharmacy = this.pharmacies.get(id);
-    if (!pharmacy) return undefined;
-    
-    const updatedPharmacy = { ...pharmacy, ...data };
-    this.pharmacies.set(id, updatedPharmacy);
-    return updatedPharmacy;
-  }
-
-  // Pharmacy Order operations
-  async getPharmacyOrders(userId: number): Promise<PharmacyOrder[]> {
-    return Array.from(this.pharmacyOrders.values())
-      .filter(order => order.userId === userId)
-      .sort((a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime());
-  }
-
-  async getPharmacyOrder(id: number): Promise<PharmacyOrder | undefined> {
-    const order = this.pharmacyOrders.get(id);
-    if (!order) return undefined;
-
-    // Get the order items
-    const items = await this.getPharmacyOrderItems(id);
-    return { ...order, items };
-  }
-
-  async createPharmacyOrder(order: InsertPharmacyOrder, items: InsertPharmacyOrderItem[]): Promise<PharmacyOrder> {
-    const id = this.pharmacyOrderId++;
-    const orderDate = new Date();
-    
-    // Create the order
-    const newOrder: PharmacyOrder = { 
-      ...order, 
-      id, 
-      orderDate,
-      status: 'pending',
-      paymentStatus: 'pending',
-      items: []
-    };
-    
-    // Create and associate items
-    const orderItems: PharmacyOrderItem[] = [];
-    for (const item of items) {
-      const itemId = this.pharmacyOrderItemId++;
-      const newItem: PharmacyOrderItem = { ...item, id: itemId, orderId: id };
-      this.pharmacyOrderItems.set(itemId, newItem);
-      orderItems.push(newItem);
-    }
-    
-    // Update order with items
-    newOrder.items = orderItems;
-    this.pharmacyOrders.set(id, newOrder);
-    
-    return newOrder;
-  }
-
-  async updatePharmacyOrderStatus(id: number, status: string, paymentStatus?: string): Promise<PharmacyOrder | undefined> {
-    const order = await this.getPharmacyOrder(id);
-    if (!order) return undefined;
-
-    const updatedOrder: PharmacyOrder = { 
-      ...order, 
-      status: status as PharmacyOrder['status'],
-      ...(paymentStatus && { paymentStatus: paymentStatus as PharmacyOrder['paymentStatus'] })
-    };
-    
-    this.pharmacyOrders.set(id, updatedOrder);
-    return updatedOrder;
-  }
-
-  async getPharmacyOrderItems(orderId: number): Promise<PharmacyOrderItem[]> {
-    return Array.from(this.pharmacyOrderItems.values())
-      .filter(item => item.orderId === orderId);
-  }
-
   private seedMedicineInfo() {
     const commonMedicines: InsertMedicineInfo[] = [
       {
@@ -431,64 +282,6 @@ export class MemStorage implements IStorage {
     commonMedicines.forEach(medicine => {
       const id = this.medicineInfoId++;
       this.medicineInfo.set(id, { ...medicine, id });
-    });
-  }
-  
-  private seedPharmacies() {
-    const samplePharmacies: InsertPharmacy[] = [
-      {
-        name: "MediCare Pharmacy",
-        address: "123 Health Street",
-        city: "Delhi",
-        state: "Delhi",
-        pincode: "110001",
-        phone: "+91-9876543210",
-        email: "contact@medicare.com",
-        latitude: 28.6139,
-        longitude: 77.2090,
-        hours: "Mon-Sat: 9AM-10PM, Sun: 10AM-7PM",
-        deliveryAvailable: true,
-        deliveryFee: 30,
-        minimumOrderAmount: 200,
-        estimatedDeliveryTime: "30-45 minutes"
-      },
-      {
-        name: "LifeCare Wellness",
-        address: "456 Wellness Avenue",
-        city: "Mumbai",
-        state: "Maharashtra",
-        pincode: "400001",
-        phone: "+91-9876543211",
-        email: "help@lifecare.com",
-        latitude: 19.0760,
-        longitude: 72.8777,
-        hours: "Mon-Sun: 24 hours",
-        deliveryAvailable: true,
-        deliveryFee: 0,
-        minimumOrderAmount: 500,
-        estimatedDeliveryTime: "60 minutes"
-      },
-      {
-        name: "Apollo Pharmacy",
-        address: "789 Health Park",
-        city: "Bangalore",
-        state: "Karnataka",
-        pincode: "560001",
-        phone: "+91-9876543212",
-        email: "customer@apollo.com",
-        latitude: 12.9716,
-        longitude: 77.5946,
-        hours: "Mon-Sun: 8AM-11PM",
-        deliveryAvailable: true,
-        deliveryFee: 40,
-        minimumOrderAmount: 300,
-        estimatedDeliveryTime: "40-50 minutes"
-      }
-    ];
-
-    samplePharmacies.forEach(pharmacy => {
-      const id = this.pharmacyId++;
-      this.pharmacies.set(id, { ...pharmacy, id, reviewCount: 0, rating: 0 });
     });
   }
 }

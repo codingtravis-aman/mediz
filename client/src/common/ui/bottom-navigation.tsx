@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Home, Pill, Camera, Bell, FileText, Store } from 'lucide-react';
+import { Home, Pill, Camera, Bell, FileText } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 
 const BottomNavigation: FC = () => {
@@ -54,27 +54,6 @@ const BottomNavigation: FC = () => {
               <Bell className={`h-5 w-5 ${isActive('/reminders') ? 'text-white' : 'text-gray-500'}`} />
             </div>
             <span className={`text-xs mt-1 ${isActive('/reminders') ? 'text-amber-600 font-bold' : 'text-gray-500'}`}>Reminders</span>
-          </div>
-        </Link>
-        
-        <Link href="/pharmacies">
-          <div className="flex flex-col items-center py-2 cursor-pointer w-16">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-              isActive('/pharmacies') || isActive('/pharmacy-orders') ? 
-              'bg-gradient-to-r from-teal-500 to-emerald-500 shadow-md shadow-teal-200' : 
-              'bg-gray-100'
-            }`}>
-              <Store className={`h-5 w-5 ${
-                isActive('/pharmacies') || isActive('/pharmacy-orders') ? 
-                'text-white' : 
-                'text-gray-500'
-              }`} />
-            </div>
-            <span className={`text-xs mt-1 ${
-              isActive('/pharmacies') || isActive('/pharmacy-orders') ? 
-              'text-teal-600 font-bold' : 
-              'text-gray-500'
-            }`}>Pharmacy</span>
           </div>
         </Link>
       </div>
