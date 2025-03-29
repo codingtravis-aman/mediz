@@ -1,10 +1,11 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, Route, Switch } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { OfflineNotification, InstallPrompt } from "./hooks/use-pwa";
-import AppRoutes from "./routes";
+import Home from '@/pages/home'; // Added import
+import Onboarding from '@/pages/onboarding'; // Added import
 
 function App() {
   const [location, navigate] = useLocation();
@@ -12,7 +13,7 @@ function App() {
   useEffect(() => {
     // Check if it's first time app use
     const hasCompletedOnboarding = localStorage.getItem('mediz-onboarding-complete');
-    
+
     if (!hasCompletedOnboarding && location === '/') {
       // Redirect to onboarding flow
       navigate('/onboarding');
@@ -21,7 +22,10 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppRoutes />
+      <Switch>
+        <Route path="/onboarding" component={Onboarding} /> {/* Added onboarding route */}
+        <Route path="/" component={Home} /> {/* Modified to handle default route */}
+      </Switch>
       <Toaster />
       <OfflineNotification />
       <InstallPrompt />
@@ -30,3 +34,24 @@ function App() {
 }
 
 export default App;
+
+// Placeholder components (replace with your actual implementations)
+const Onboarding = () => {
+  const [completed, setCompleted] = React.useState(false)
+  const navigate = useLocation()[1]
+  const handleComplete = () => {
+    localStorage.setItem('mediz-onboarding-complete', 'true')
+    setCompleted(true)
+    navigate('/')
+  }
+
+  if(completed){
+    return <div>Onboarding Complete! Redirecting...</div>
+  }
+  return (
+    <div>
+      <h1>Onboarding</h1>
+      <button onClick={handleComplete}>Complete Onboarding</button>
+    </div>
+  );
+};
