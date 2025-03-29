@@ -1,3 +1,5 @@
+@import './lib/colors.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,4 +12,72 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+}
+
+/* Custom Utility Classes */
+.gradient-blue-teal {
+  background: var(--blue-teal-gradient);
+}
+
+.gradient-pink-purple {
+  background: var(--pink-purple-gradient);
+}
+
+.gradient-red-orange {
+  background: var(--red-orange-gradient);
+}
+
+/* Custom Pill Styles */
+.pill {
+  @apply px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.pill-antibiotic {
+  background-color: var(--pill-antibiotic);
+  color: white;
+}
+
+.pill-painkiller {
+  background-color: var(--pill-painkiller);
+  color: white;
+}
+
+.pill-vitamin {
+  background-color: var(--pill-vitamin);
+  color: white;
+}
+
+.pill-generic {
+  background-color: var(--pill-generic);
+  color: white;
+}
+
+/* Custom Card Styles for Medications and Prescriptions */
+.card-hover {
+  @apply transition-all duration-200 hover:shadow-md hover:-translate-y-1;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+  background-color: var(--blue-primary);
+  color: white;
+  @apply hover:opacity-90 transition-opacity;
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: white;
+  @apply hover:opacity-90 transition-opacity;
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+  @apply hover:opacity-90 transition-opacity;
+}
+
+.btn-warning {
+  background-color: var(--warning);
+  color: white;
+  @apply hover:opacity-90 transition-opacity;
 }

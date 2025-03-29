@@ -1,0 +1,43 @@
+:root {
+  /* Primary Colors */
+  --blue-primary: #2E86DE;
+  --green-primary: #10AC84;
+  --white: #FFFFFF;
+  --yellow-accent: #FDCB6E;
+  
+  /* Secondary Colors */
+  --teal-secondary: #1ABC9C;
+  --red-alert: #E74C3C;
+  --orange-warning: #F39C12;
+  
+  /* Dark Mode Colors */
+  --dark-gray: #2C3E50;
+  --light-gray: #95A5A6;
+  --sky-blue: #3498DB;
+  
+  /* Gradients */
+  --blue-teal-gradient: linear-gradient(135deg, #2E86DE 0%, #1ABC9C 100%);
+  --pink-purple-gradient: linear-gradient(135deg, #FF6B6B 0%, #6A89CC 100%);
+  --red-orange-gradient: linear-gradient(135deg, #E74C3C 0%, #F39C12 100%);
+  
+  /* Text Colors */
+  --text-dark: #2C3E50;
+  --text-light: #FFFFFF;
+  --text-muted: #95A5A6;
+  
+  /* Background Colors */
+  --bg-light: #F8F9FA;
+  --bg-dark: #2C3E50;
+  
+  /* Semantic Colors */
+  --success: #10AC84;
+  --info: #3498DB;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  
+  /* Pill Colors (for medication types) */
+  --pill-antibiotic: #1ABC9C;
+  --pill-painkiller: #E74C3C;
+  --pill-vitamin: #F39C12;
+  --pill-generic: #95A5A6;
+}
