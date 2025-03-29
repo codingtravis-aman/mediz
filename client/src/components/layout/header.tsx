@@ -8,19 +8,19 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ fixed = true }) => {
   return (
-    <header className={`bg-white shadow-sm ${fixed ? 'fixed top-0 left-0 right-0 z-10' : ''}`}>
-      <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+    <header className={`gradient-blue-teal shadow-md ${fixed ? 'fixed top-0 left-0 right-0 z-10' : ''}`}>
+      <div className="max-w-md mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <div className="h-8 w-8 bg-primary-500 rounded-md flex items-center justify-center">
-            <span className="text-white font-semibold">M</span>
+          <div className="h-9 w-9 bg-white/20 backdrop-blur-sm rounded-md flex items-center justify-center shadow-sm">
+            <span className="text-white font-bold">M</span>
           </div>
-          <h1 className="ml-2 text-xl font-semibold text-gray-800">Mediz</h1>
+          <h1 className="ml-2 text-xl font-bold text-white">Mediz</h1>
         </div>
-        <div className="flex">
-          <Button variant="ghost" size="icon" className="text-gray-500 hover:bg-gray-100 rounded-full">
+        <div className="flex space-x-1">
+          <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 rounded-full">
             <Bell className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon" className="text-gray-500 hover:bg-gray-100 rounded-full">
+          <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 rounded-full">
             <User className="h-5 w-5" />
           </Button>
         </div>
