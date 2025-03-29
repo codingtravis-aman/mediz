@@ -9,6 +9,7 @@ import Medications from "@/pages/medications";
 import MedicationDetails from "@/pages/medication-details";
 import Reminders from "@/pages/reminders";
 import Prescriptions from "@/pages/prescriptions";
+import { OfflineNotification, InstallPrompt } from "@/hooks/use-pwa";
 
 function Router() {
   return (
@@ -29,6 +30,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router />
       <Toaster />
+      <OfflineNotification />
+      <InstallPrompt />
     </QueryClientProvider>
   );
 }

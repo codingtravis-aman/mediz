@@ -10,6 +10,7 @@ import { getMedications, getPrescriptions, createMedicationLog, DEMO_USER_ID } f
 import { useToast } from '@/hooks/use-toast';
 import { formatDistanceToNow } from 'date-fns';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Medication, Prescription } from '@/lib/types';
 
 const Home: FC = () => {
   const { toast } = useToast();
@@ -31,17 +32,17 @@ const Home: FC = () => {
   }, []);
 
   // Fetch medications and prescriptions
-  const { data: medications, isLoading: isLoadingMedications } = useQuery({
+  const { data: medications, isLoading: isLoadingMedications } = useQuery<Medication[]>({
     queryKey: ['/api/medications'],
     refetchInterval: 60000, // Refresh every minute to update reminders
   });
 
-  const { data: prescriptions, isLoading: isLoadingPrescriptions } = useQuery({
+  const { data: prescriptions, isLoading: isLoadingPrescriptions } = useQuery<Prescription[]>({
     queryKey: ['/api/prescriptions'],
   });
 
   // Filter active medications with upcoming reminders
-  const upcomingMedications = medications?.filter(med => med.isActive).slice(0, 3) || [];
+  const upcomingMedications = medications?.filter((med: Medication) => med.isActive).slice(0, 3) || [];
 
   // Get recent prescriptions
   const recentPrescriptions = prescriptions?.slice(0, 2) || [];
@@ -109,23 +110,23 @@ const Home: FC = () => {
           {/* Quick Actions */}
           <div className="grid grid-cols-2 gap-3 mb-6">
             <Link href="/scan">
-              <a className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow">
                 <div className="bg-primary-50 w-12 h-12 rounded-full flex items-center justify-center mb-3">
                   <Camera className="h-5 w-5 text-primary-600" />
                 </div>
                 <h3 className="font-medium">Scan Prescription</h3>
                 <p className="text-xs text-gray-500 mt-1">Upload a new prescription</p>
-              </a>
+              </div>
             </Link>
             
             <Link href="/medications">
-              <a className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow">
                 <div className="bg-secondary-50 w-12 h-12 rounded-full flex items-center justify-center mb-3">
                   <Pill className="h-5 w-5 text-secondary-600" />
                 </div>
                 <h3 className="font-medium">My Medications</h3>
                 <p className="text-xs text-gray-500 mt-1">View & track medications</p>
-              </a>
+              </div>
             </Link>
           </div>
           
@@ -134,7 +135,7 @@ const Home: FC = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-semibold">Upcoming Reminders</h3>
               <Link href="/reminders">
-                <a className="text-primary-600 text-sm font-medium">View All</a>
+                <span className="text-primary-600 text-sm font-medium cursor-pointer">View All</span>
               </Link>
             </div>
             
@@ -144,7 +145,7 @@ const Home: FC = () => {
                 <Skeleton className="h-16 w-full" />
               </div>
             ) : upcomingMedications.length > 0 ? (
-              upcomingMedications.map((medication, index) => (
+              upcomingMedications.map((medication: Medication, index: number) => (
                 <MedicationReminder
                   key={index}
                   medication={medication}
@@ -172,7 +173,7 @@ const Home: FC = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-semibold">Recent Prescriptions</h3>
               <Link href="/prescriptions">
-                <a className="text-primary-600 text-sm font-medium">View All</a>
+                <span className="text-primary-600 text-sm font-medium cursor-pointer">View All</span>
               </Link>
             </div>
             
@@ -182,7 +183,7 @@ const Home: FC = () => {
                 <Skeleton className="h-14 w-full" />
               </div>
             ) : recentPrescriptions.length > 0 ? (
-              recentPrescriptions.map((prescription, index) => (
+              recentPrescriptions.map((prescription: Prescription, index: number) => (
                 <div key={index} className="flex items-center border-b border-gray-100 pb-3 mb-3 last:mb-0 last:border-b-0">
                   <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
                     <svg className="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -200,11 +201,11 @@ const Home: FC = () => {
                     </p>
                   </div>
                   <Link href={`/prescriptions/${prescription.id}`}>
-                    <a className="text-primary-600">
+                    <div className="text-primary-600 cursor-pointer">
                       <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                       </svg>
-                    </a>
+                    </div>
                   </Link>
                 </div>
               ))

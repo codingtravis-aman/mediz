@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="40" fill="#4338CA"/>
+  <path d="M50.625 90C50.625 67.8635 68.5605 50 90.7031 50H129.375C133.209 50 136.406 53.1357 136.406 57V123C136.406 126.864 133.209 130 129.375 130H90.7031C68.5605 130 50.625 112.136 50.625 90Z" fill="white"/>
+  <rect x="60.4688" y="78.75" width="14.0625" height="22.5" rx="2.8125" fill="#4338CA"/>
+  <rect x="82.9688" y="78.75" width="14.0625" height="22.5" rx="2.8125" fill="#4338CA"/>
+  <rect x="105.469" y="78.75" width="14.0625" height="22.5" rx="2.8125" fill="#4338CA"/>
+  <path d="M75.2344 64.0625V60.4688C75.2344 59.6922 75.8641 59.0625 76.6406 59.0625H80.8594C81.6359 59.0625 82.2656 59.6922 82.2656 60.4688V64.0625" stroke="white" stroke-width="2.8125" stroke-linecap="round"/>
+  <path d="M97.7344 64.0625V60.4688C97.7344 59.6922 98.364 59.0625 99.1406 59.0625H103.359C104.136 59.0625 104.766 59.6922 104.766 60.4688V64.0625" stroke="white" stroke-width="2.8125" stroke-linecap="round"/>
+  <path d="M120.234 64.0625V60.4688C120.234 59.6922 120.864 59.0625 121.641 59.0625H125.859C126.636 59.0625 127.266 59.6922 127.266 60.4688V64.0625" stroke="white" stroke-width="2.8125" stroke-linecap="round"/>
+  <path d="M100.547 112.5L112.5 98.4375" stroke="white" stroke-width="4.21875" stroke-linecap="round"/>
+  <path d="M66.7969 112.5L78.75 98.4375" stroke="white" stroke-width="4.21875" stroke-linecap="round"/>
+</svg>
