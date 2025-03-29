@@ -62,8 +62,13 @@ const ProfileSetup = () => {
   });
 
   const profileMutation = useMutation({
-    mutationFn: (values: z.infer<typeof formSchema>) => 
-      apiRequest('POST', '/api/users/profile', values),
+    mutationFn: (values: z.infer<typeof formSchema>) => {
+      return apiRequest({
+        url: '/api/users/profile',
+        method: 'POST',
+        body: values
+      });
+    },
     onSuccess: () => {
       // Navigate to permissions page after profile setup
       navigate('/onboarding/permissions');

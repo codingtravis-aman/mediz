@@ -47,8 +47,13 @@ const Register = () => {
   });
 
   const registerMutation = useMutation({
-    mutationFn: (values: { username: string; fullName: string; password: string }) => 
-      apiRequest('POST', '/api/auth/register', values),
+    mutationFn: (values: { username: string; fullName: string; password: string }) => {
+      return apiRequest({
+        url: '/api/auth/register',
+        method: 'POST',
+        body: values
+      });
+    },
     onSuccess: () => {
       // Navigate to profile setup page after successful registration
       navigate('/onboarding/profile');

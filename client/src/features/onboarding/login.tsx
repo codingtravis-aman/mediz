@@ -35,8 +35,13 @@ const Login = () => {
   });
 
   const loginMutation = useMutation({
-    mutationFn: (values: { username: string; password: string }) => 
-      apiRequest('POST', '/api/auth/login', values),
+    mutationFn: (values: { username: string; password: string }) => {
+      return apiRequest({
+        url: '/api/auth/login', 
+        method: 'POST', 
+        body: values
+      });
+    },
     onSuccess: () => {
       // Set authentication state
       localStorage.setItem('mediz-authenticated', 'true');

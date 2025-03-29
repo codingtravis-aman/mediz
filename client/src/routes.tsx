@@ -9,6 +9,8 @@ const MedicationDetails = lazy(() => import('./features/medications/medication-d
 const Prescriptions = lazy(() => import('./features/prescriptions/prescriptions'));
 const ScanPrescription = lazy(() => import('./features/prescriptions/scan-prescription'));
 const Reminders = lazy(() => import('./features/reminders/reminders'));
+const Profile = lazy(() => import('./pages/profile'));
+const Settings = lazy(() => import('./pages/settings'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 // Onboarding components
@@ -40,6 +42,8 @@ const AppRoutes = () => {
         <Route path="/prescriptions" component={Prescriptions} />
         <Route path="/scan" component={ScanPrescription} />
         <Route path="/reminders" component={Reminders} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

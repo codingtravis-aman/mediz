@@ -108,7 +108,11 @@ export class MemStorage implements IStorage {
       id, 
       uploadDate,
       status: "processed",
-      medicationsCount: 0
+      medicationsCount: 0,
+      source: insertPrescription.source || null,
+      originalImage: insertPrescription.originalImage || null,
+      translatedText: insertPrescription.translatedText || null,
+      language: insertPrescription.language || null
     };
     this.prescriptions.set(id, prescription);
     return prescription;
@@ -136,11 +140,19 @@ export class MemStorage implements IStorage {
 
   async createMedication(insertMedication: InsertMedication): Promise<Medication> {
     const id = this.medicationId++;
+    const startDate = insertMedication.startDate || new Date();
+    
     const medication: Medication = { 
       ...insertMedication, 
       id,
       status: "active",
-      isActive: true
+      isActive: true,
+      startDate,
+      prescriptionId: insertMedication.prescriptionId || null,
+      duration: insertMedication.duration || null,
+      endDate: insertMedication.endDate || null,
+      instructions: insertMedication.instructions || null,
+      medicationType: insertMedication.medicationType || null
     };
     this.medications.set(id, medication);
 
@@ -225,7 +237,12 @@ export class MemStorage implements IStorage {
   async createMedicationLog(insertLog: InsertMedicationLog): Promise<MedicationLog> {
     const id = this.medicationLogId++;
     const logDate = new Date();
-    const log: MedicationLog = { ...insertLog, id, logDate };
+    const log: MedicationLog = { 
+      ...insertLog, 
+      id, 
+      logDate,
+      notes: insertLog.notes || null 
+    };
     this.medicationLogs.set(id, log);
     return log;
   }
@@ -281,7 +298,17 @@ export class MemStorage implements IStorage {
 
     commonMedicines.forEach(medicine => {
       const id = this.medicineInfoId++;
-      this.medicineInfo.set(id, { ...medicine, id });
+      this.medicineInfo.set(id, { 
+        ...medicine, 
+        id,
+        genericName: medicine.genericName || null,
+        category: medicine.category || null,
+        uses: medicine.uses || null,
+        sideEffects: medicine.sideEffects || null,
+        precautions: medicine.precautions || null,
+        interactions: medicine.interactions || null,
+        dosageInstructions: medicine.dosageInstructions || null
+      });
     });
   }
 }
