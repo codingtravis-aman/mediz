@@ -106,10 +106,10 @@ const Home: FC = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-indigo-400/20 rounded-bl-full -z-10"></div>
             <div className="flex items-center">
               <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white mr-3 shadow-lg">
-                <span className="text-xl font-extrabold">R</span>
+                <span className="text-xl font-extrabold">A</span>
               </div>
               <div>
-                <h2 className="text-xl font-bold mb-1 text-gray-800">Hi, Rahul! 👋</h2>
+                <h2 className="text-xl font-bold mb-1 text-gray-800">Hi, Aman! 👋</h2>
                 <p className="text-gray-500 text-sm">Today is a great day to stay healthy!</p>
               </div>
             </div>

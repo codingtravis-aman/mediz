@@ -400,7 +400,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         demoUser = await storage.createUser({
           username: "demo",
           password: "demo123",
-          fullName: "Rahul Kumar"
+          fullName: "Aman Kumar"
         });
         
         console.log("Demo user created:", demoUser);
