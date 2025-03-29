@@ -15,6 +15,8 @@ const NotFound = lazy(() => import('./pages/not-found'));
 const SplashScreen = lazy(() => import('./features/onboarding/splash-screen'));
 const LanguageSelection = lazy(() => import('./features/onboarding/language-selection'));
 const Register = lazy(() => import('./features/onboarding/register'));
+const Login = lazy(() => import('./features/onboarding/login'));
+const ForgotPassword = lazy(() => import('./features/onboarding/forgot-password'));
 const ProfileSetup = lazy(() => import('./features/onboarding/profile-setup'));
 const Permissions = lazy(() => import('./features/onboarding/permissions'));
 
@@ -28,6 +30,8 @@ const AppRoutes = () => {
         <Route path="/onboarding/register" component={Register} />
         <Route path="/onboarding/profile" component={ProfileSetup} />
         <Route path="/onboarding/permissions" component={Permissions} />
+        <Route path="/login" component={Login} />
+        <Route path="/forgot-password" component={ForgotPassword} />
         
         {/* Main app routes */}
         <Route path="/" component={Home} />
