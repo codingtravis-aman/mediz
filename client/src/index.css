@@ -12,6 +12,23 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+  
+  /* Improved Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-900;
+  }
+  
+  h1 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h2 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  h3 {
+    @apply text-lg md:text-xl;
+  }
 }
 
 /* Custom Utility Classes */
@@ -25,6 +42,52 @@
 
 .gradient-red-orange {
   background: var(--red-orange-gradient);
+}
+
+.gradient-purple-indigo {
+  background: var(--purple-indigo-gradient);
+}
+
+.gradient-pink-rose {
+  background: var(--pink-rose-gradient);
+}
+
+.gradient-amber-orange {
+  background: var(--amber-orange-gradient);
+}
+
+.gradient-blue-cyan {
+  background: var(--blue-cyan-gradient);
+}
+
+/* Gradient Text Effects */
+.text-gradient-purple-indigo {
+  @apply text-transparent bg-clip-text;
+  background-image: var(--purple-indigo-gradient);
+}
+
+.text-gradient-pink-rose {
+  @apply text-transparent bg-clip-text;
+  background-image: var(--pink-rose-gradient);
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.scale-on-hover {
+  @apply transition-transform duration-300;
+}
+
+.scale-on-hover:hover {
+  @apply transform scale-105;
 }
 
 /* Custom Pill Styles */
@@ -53,33 +116,86 @@
 }
 
 /* Custom Card Styles for Medications and Prescriptions */
+.card {
+  @apply bg-white rounded-2xl shadow-md overflow-hidden relative p-5;
+}
+
 .card-hover {
-  @apply transition-all duration-200 hover:shadow-md hover:-translate-y-1;
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+.card-gradient {
+  @apply relative overflow-hidden;
+}
+
+.card-gradient::before {
+  content: '';
+  @apply absolute top-0 right-0 w-24 h-24 rounded-bl-full -z-10 opacity-10;
+}
+
+.card-purple::before {
+  background: var(--purple-indigo-gradient);
+}
+
+.card-pink::before {
+  background: var(--pink-rose-gradient);
+}
+
+.card-amber::before {
+  background: var(--amber-orange-gradient);
+}
+
+.card-blue::before {
+  background: var(--blue-cyan-gradient);
 }
 
 /* Custom Button Styles */
+.btn {
+  @apply rounded-lg px-4 py-2 font-medium transition-all duration-300;
+}
+
 .btn-primary {
-  background-color: var(--blue-primary);
+  background-color: var(--purple-primary);
   color: white;
-  @apply hover:opacity-90 transition-opacity;
+  @apply hover:shadow-md hover:opacity-90;
 }
 
 .btn-success {
   background-color: var(--success);
   color: white;
-  @apply hover:opacity-90 transition-opacity;
+  @apply hover:shadow-md hover:opacity-90;
 }
 
 .btn-danger {
   background-color: var(--danger);
   color: white;
-  @apply hover:opacity-90 transition-opacity;
+  @apply hover:shadow-md hover:opacity-90;
 }
 
 .btn-warning {
   background-color: var(--warning);
   color: white;
-  @apply hover:opacity-90 transition-opacity;
+  @apply hover:shadow-md hover:opacity-90;
+}
+
+.btn-gradient {
+  @apply text-white shadow-md hover:shadow-lg;
+}
+
+.btn-purple {
+  background: var(--purple-indigo-gradient);
+}
+
+.btn-pink {
+  background: var(--pink-rose-gradient);
+}
+
+.btn-amber {
+  background: var(--amber-orange-gradient);
+}
+
+.btn-blue {
+  background: var(--blue-cyan-gradient);
 }
 
 /* Navigation Item Active Style */
@@ -96,5 +212,24 @@
   width: 24px;
   height: 3px;
   border-radius: 2px;
-  background: var(--blue-teal-gradient);
+  background: var(--purple-indigo-gradient);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #6366f1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #4f46e5);
 }

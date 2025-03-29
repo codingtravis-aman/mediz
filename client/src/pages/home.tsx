@@ -99,17 +99,30 @@ const Home: FC = () => {
     <div className="min-h-screen relative pb-16">
       <Header />
       
-      <div className="pt-16 pb-2 bg-gradient-to-br from-blue-50 to-white min-h-screen">
+      <div className="pt-20 pb-2 bg-gradient-to-b from-indigo-50 via-purple-50 to-white min-h-screen">
         <div className="p-4 max-w-lg mx-auto">
-          {/* Welcome Section with Clean Design */}
-          <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-blue-100">
+          {/* Welcome Section with Vibrant Design */}
+          <div className="mb-6 p-5 bg-white rounded-2xl shadow-lg border-0 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-indigo-400/20 rounded-bl-full -z-10"></div>
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white mr-3">
-                <span className="text-xl font-bold">R</span>
+              <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white mr-3 shadow-lg">
+                <span className="text-xl font-extrabold">R</span>
               </div>
               <div>
-                <h2 className="text-xl font-semibold mb-1 text-slate-800">Welcome back, Rahul</h2>
-                <p className="text-slate-500 text-sm">Manage your medications and prescriptions</p>
+                <h2 className="text-xl font-bold mb-1 text-gray-800">नमस्ते, Rahul! 👋</h2>
+                <p className="text-gray-500 text-sm">आज का दिन स्वस्थ रहने के लिए शुभ है!</p>
+              </div>
+            </div>
+            
+            <div className="mt-4 bg-gradient-to-r from-purple-50 to-indigo-50 p-3 rounded-xl">
+              <div className="flex items-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white">
+                  <Bell className="h-4 w-4" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs font-medium text-gray-900">आज की दवाओं की याद दिलाएँ</p>
+                  <p className="text-[10px] text-gray-500">आपके दिन के लिए 3 दवाएँ निर्धारित हैं</p>
+                </div>
               </div>
             </div>
           </div>
@@ -117,120 +130,170 @@ const Home: FC = () => {
           {/* Quick Actions */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             <Link href="/scan">
-              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow border-b-4 border-blue-500">
-                <div className="bg-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-3 shadow-sm">
+              <div className="group bg-white p-5 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 duration-300 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500"></div>
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Camera className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-semibold text-slate-800 text-base">Scan Prescription</h3>
-                <p className="text-xs text-slate-500 mt-1">Upload a new prescription</p>
+                <h3 className="font-bold text-gray-900 text-base">स्कैन करें</h3>
+                <p className="text-xs text-gray-500 mt-1">नुस्खे को स्कैन करके समझें</p>
               </div>
             </Link>
             
             <Link href="/medications">
-              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow border-b-4 border-emerald-500">
-                <div className="bg-emerald-500 w-12 h-12 rounded-lg flex items-center justify-center mb-3 shadow-sm">
+              <div className="group bg-white p-5 rounded-2xl shadow-md cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 duration-300 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Pill className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-semibold text-slate-800 text-base">My Medications</h3>
-                <p className="text-xs text-slate-500 mt-1">View & track medications</p>
+                <h3 className="font-bold text-gray-900 text-base">मेरी दवाएँ</h3>
+                <p className="text-xs text-gray-500 mt-1">अपनी दवाओं को देखें और ट्रैक करें</p>
               </div>
             </Link>
           </div>
           
           {/* Upcoming Medications */}
-          <div className="bg-white rounded-xl shadow-sm p-5 mb-6 border-l-4 border-l-emerald-500">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-white rounded-2xl shadow-md p-5 mb-6 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-400/10 to-orange-400/10 rounded-bl-full -z-10"></div>
+            <div className="flex justify-between items-center mb-5">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
-                  <Bell className="h-4 w-4 text-white" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center mr-3 shadow-md">
+                  <Bell className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="font-medium text-slate-800 text-lg">Upcoming Reminders</h3>
+                <div>
+                  <h3 className="font-bold text-gray-800 text-lg">आज की याद दिलाएँ</h3>
+                  <p className="text-xs text-gray-500">अपनी दवाओं को ट्रैक करें</p>
+                </div>
               </div>
               <Link href="/reminders">
-                <span className="text-blue-600 text-sm font-medium cursor-pointer hover:bg-blue-50 px-3 py-1 rounded hover:underline">View All</span>
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-medium cursor-pointer hover:shadow-lg transition-shadow">
+                  सभी देखें
+                </div>
               </Link>
             </div>
             
             {isLoadingMedications ? (
               <div className="space-y-3">
-                <Skeleton className="h-16 w-full" />
-                <Skeleton className="h-16 w-full" />
+                <Skeleton className="h-16 w-full rounded-xl" />
+                <Skeleton className="h-16 w-full rounded-xl" />
               </div>
             ) : upcomingMedications.length > 0 ? (
-              upcomingMedications.map((medication: Medication, index: number) => (
-                <MedicationReminder
-                  key={index}
-                  medication={medication}
-                  reminder={{
-                    id: index + 1,
-                    medicationId: medication.id,
-                    userId: DEMO_USER_ID,
-                    time: '14:00',
-                    daysOfWeek: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
-                    isActive: true
-                  }}
-                  onMarkTaken={handleMarkTaken}
-                  onSkip={handleSkipMedication}
-                />
-              ))
+              <div className="space-y-3">
+                {upcomingMedications.map((medication: Medication, index: number) => (
+                  <div key={index} className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-100">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center mr-3 text-white shadow-md">
+                          <Pill className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-800">{medication.name}</h4>
+                          <p className="text-xs text-gray-500">{medication.dosage} - {medication.frequency}</p>
+                        </div>
+                      </div>
+                      <div className="flex space-x-2">
+                        <button 
+                          onClick={() => handleMarkTaken(medication.id, index + 1)}
+                          className="px-3 py-1.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg text-xs font-bold shadow-md hover:shadow-lg transition-shadow"
+                        >
+                          लिया
+                        </button>
+                        <button 
+                          onClick={() => handleSkipMedication(medication.id, index + 1)}
+                          className="px-3 py-1.5 bg-gray-200 text-gray-600 rounded-lg text-xs font-bold hover:bg-gray-300 transition-colors"
+                        >
+                          छोड़ें
+                        </button>
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center mr-2">
+                        <Bell className="h-3 w-3 text-amber-600" />
+                      </div>
+                      <p className="text-xs text-amber-600 font-medium">अगला समय: 14:00 (2:00 PM)</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <div className="text-center py-8 bg-slate-50 rounded-lg border border-slate-100">
-                <Bell className="h-10 w-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-slate-500">No upcoming medication reminders</p>
+              <div className="text-center py-10 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-100">
+                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 flex items-center justify-center mb-3">
+                  <Bell className="h-8 w-8 text-amber-400" />
+                </div>
+                <h4 className="font-bold text-gray-700 mb-1">कोई याद दिलाने वाला नहीं!</h4>
+                <p className="text-sm text-gray-500">आज के लिए कोई दवा अनुस्मारक नहीं है</p>
               </div>
             )}
           </div>
           
           {/* Recent Prescriptions */}
-          <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-l-blue-500">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-white rounded-2xl shadow-md p-5 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-bl-full -z-10"></div>
+            <div className="flex justify-between items-center mb-5">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
-                  <FileText className="h-4 w-4 text-white" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mr-3 shadow-md">
+                  <FileText className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="font-medium text-slate-800 text-lg">Recent Prescriptions</h3>
+                <div>
+                  <h3 className="font-bold text-gray-800 text-lg">हाल के नुस्खे</h3>
+                  <p className="text-xs text-gray-500">अपने स्कैन किए गए नुस्खे देखें</p>
+                </div>
               </div>
               <Link href="/prescriptions">
-                <span className="text-blue-600 text-sm font-medium cursor-pointer hover:bg-blue-50 px-3 py-1 rounded hover:underline">View All</span>
+                <div className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-medium cursor-pointer hover:shadow-lg transition-shadow">
+                  सभी देखें
+                </div>
               </Link>
             </div>
             
             {isLoadingPrescriptions ? (
               <div className="space-y-3">
-                <Skeleton className="h-14 w-full" />
-                <Skeleton className="h-14 w-full" />
+                <Skeleton className="h-16 w-full rounded-xl" />
+                <Skeleton className="h-16 w-full rounded-xl" />
               </div>
             ) : recentPrescriptions.length > 0 ? (
-              recentPrescriptions.map((prescription: Prescription, index: number) => (
-                <div key={index} className="flex items-center border-b border-slate-100 pb-3 mb-3 last:mb-0 last:border-b-0 hover:bg-slate-50 p-3 rounded-lg transition-colors">
-                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
-                    <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                      <polyline points="14 2 14 8 20 8"></polyline>
-                      <line x1="16" y1="13" x2="8" y2="13"></line>
-                      <line x1="16" y1="17" x2="8" y2="17"></line>
-                      <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-slate-800">{prescription.title}</h4>
-                    <p className="text-xs text-slate-500">
-                      Uploaded {formatDistanceToNow(new Date(prescription.uploadDate), { addSuffix: true })}
-                    </p>
-                  </div>
-                  <Link href={`/prescriptions/${prescription.id}`}>
-                    <div className="text-white cursor-pointer bg-blue-500 hover:bg-blue-600 p-2 rounded-lg transition-colors">
-                      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
+              <div className="space-y-3">
+                {recentPrescriptions.map((prescription: Prescription, index: number) => (
+                  <div key={index} className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-100 group hover:shadow-md transition-shadow">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mr-3 text-white shadow-md group-hover:scale-110 transition-transform">
+                          <FileText className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-800">{prescription.title}</h4>
+                          <div className="flex items-center mt-1">
+                            <div className="flex-shrink-0 w-3 h-3 rounded-full bg-blue-500 mr-1"></div>
+                            <p className="text-xs text-gray-500">
+                              {formatDistanceToNow(new Date(prescription.uploadDate), { addSuffix: true })} अपलोड किया गया
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <Link href={`/prescriptions/${prescription.id}`}>
+                        <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white cursor-pointer shadow-md hover:shadow-lg transition-shadow group-hover:scale-105 transform-gpu duration-300">
+                          <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                          </svg>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
-                </div>
-              ))
+                    <div className="mt-3 flex items-center">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mr-2 text-white">
+                        <Pill className="h-3 w-3" />
+                      </div>
+                      <p className="text-xs text-blue-600 font-medium">{prescription.medicationsCount} दवाएँ पाई गईं</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <div className="text-center py-8 bg-slate-50 rounded-lg border border-slate-100">
-                <FileText className="h-10 w-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-slate-500">No prescriptions uploaded yet</p>
+              <div className="text-center py-10 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100">
+                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-3">
+                  <FileText className="h-8 w-8 text-blue-400" />
+                </div>
+                <h4 className="font-bold text-gray-700 mb-1">कोई नुस्खा नहीं!</h4>
+                <p className="text-sm text-gray-500">अभी तक कोई नुस्खा अपलोड नहीं किया गया है</p>
               </div>
             )}
           </div>
