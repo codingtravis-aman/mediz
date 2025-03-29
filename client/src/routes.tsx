@@ -11,10 +11,25 @@ const ScanPrescription = lazy(() => import('./features/prescriptions/scan-prescr
 const Reminders = lazy(() => import('./features/reminders/reminders'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
+// Onboarding components
+const SplashScreen = lazy(() => import('./features/onboarding/splash-screen'));
+const LanguageSelection = lazy(() => import('./features/onboarding/language-selection'));
+const Register = lazy(() => import('./features/onboarding/register'));
+const ProfileSetup = lazy(() => import('./features/onboarding/profile-setup'));
+const Permissions = lazy(() => import('./features/onboarding/permissions'));
+
 const AppRoutes = () => {
   return (
     <Suspense fallback={<div className="p-4"><Skeleton className="h-screen" /></div>}>
       <Switch>
+        {/* Onboarding routes */}
+        <Route path="/onboarding" component={SplashScreen} />
+        <Route path="/onboarding/language" component={LanguageSelection} />
+        <Route path="/onboarding/register" component={Register} />
+        <Route path="/onboarding/profile" component={ProfileSetup} />
+        <Route path="/onboarding/permissions" component={Permissions} />
+        
+        {/* Main app routes */}
         <Route path="/" component={Home} />
         <Route path="/medications" component={Medications} />
         <Route path="/medications/:id" component={MedicationDetails} />
