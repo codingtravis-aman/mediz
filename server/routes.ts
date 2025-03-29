@@ -6,7 +6,10 @@ import {
   insertPrescriptionSchema, 
   insertMedicationSchema, 
   insertReminderSchema, 
-  insertMedicationLogSchema
+  insertMedicationLogSchema,
+  insertPharmacySchema,
+  insertPharmacyOrderSchema,
+  insertPharmacyOrderItemSchema
 } from "@shared/schema";
 import { z } from "zod";
 
@@ -399,6 +402,137 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true, message: "Profile updated successfully" });
     } catch (error) {
       res.status(500).json({ message: "Failed to update profile" });
+    }
+  });
+  
+  // Pharmacy routes
+  app.get("/api/pharmacies", async (req, res) => {
+    try {
+      const pharmacies = await storage.getPharmacies();
+      res.json(pharmacies);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to get pharmacies" });
+    }
+  });
+
+  app.get("/api/pharmacies/search", async (req, res) => {
+    try {
+      const query = req.query.q as string;
+      const lat = req.query.lat ? Number(req.query.lat) : undefined;
+      const lng = req.query.lng ? Number(req.query.lng) : undefined;
+      
+      if (!query || query.length < 2) {
+        return res.status(400).json({ message: "Search query must be at least 2 characters" });
+      }
+      
+      let location: { lat: number, lng: number } | undefined = undefined;
+      if (lat !== undefined && lng !== undefined) {
+        location = { lat, lng };
+      }
+      
+      const pharmacies = await storage.searchPharmacies(query, location);
+      res.json(pharmacies);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to search pharmacies" });
+    }
+  });
+
+  app.get("/api/pharmacies/:id", async (req, res) => {
+    try {
+      const pharmacyId = Number(req.params.id);
+      const pharmacy = await storage.getPharmacy(pharmacyId);
+      
+      if (!pharmacy) {
+        return res.status(404).json({ message: "Pharmacy not found" });
+      }
+      
+      res.json(pharmacy);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to get pharmacy" });
+    }
+  });
+
+  // Pharmacy Order routes
+  app.get("/api/pharmacy-orders", authenticate, async (req, res) => {
+    try {
+      const orders = await storage.getPharmacyOrders(req.body.userId);
+      res.json(orders);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to get pharmacy orders" });
+    }
+  });
+
+  app.get("/api/pharmacy-orders/:id", authenticate, async (req, res) => {
+    try {
+      const orderId = Number(req.params.id);
+      const order = await storage.getPharmacyOrder(orderId);
+      
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+      
+      if (order.userId !== req.body.userId) {
+        return res.status(403).json({ message: "Not authorized to access this order" });
+      }
+      
+      res.json(order);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to get pharmacy order" });
+    }
+  });
+
+  app.post("/api/pharmacy-orders", authenticate, async (req, res) => {
+    try {
+      const { items, ...orderData } = req.body;
+      
+      if (!items || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).json({ message: "Order must include at least one item" });
+      }
+      
+      const orderSchema = insertPharmacyOrderSchema.parse({
+        ...orderData,
+        userId: req.body.userId
+      });
+      
+      const orderItems = [];
+      for (const item of items) {
+        const validatedItem = insertPharmacyOrderItemSchema.parse(item);
+        orderItems.push(validatedItem);
+      }
+      
+      const order = await storage.createPharmacyOrder(orderSchema, orderItems);
+      res.status(201).json(order);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid data", errors: error.errors });
+      }
+      res.status(500).json({ message: "Failed to create pharmacy order" });
+    }
+  });
+
+  app.put("/api/pharmacy-orders/:id/status", authenticate, async (req, res) => {
+    try {
+      const orderId = Number(req.params.id);
+      const { status, paymentStatus } = req.body;
+      
+      if (!status) {
+        return res.status(400).json({ message: "Status is required" });
+      }
+      
+      const order = await storage.getPharmacyOrder(orderId);
+      
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+      
+      if (order.userId !== req.body.userId) {
+        return res.status(403).json({ message: "Not authorized to update this order" });
+      }
+      
+      const updatedOrder = await storage.updatePharmacyOrderStatus(orderId, status, paymentStatus);
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to update order status" });
     }
   });
 

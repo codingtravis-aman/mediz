@@ -6,6 +6,9 @@ import type {
   Reminder,
   MedicationLog,
   MedicineInfo,
+  Pharmacy,
+  PharmacyOrder,
+  PharmacyOrderItem
 } from "./types";
 
 // Demo user id for testing
@@ -112,5 +115,46 @@ export async function searchMedicineInfo(term: string): Promise<MedicineInfo[]> 
 
 export async function getMedicineInfo(name: string): Promise<MedicineInfo> {
   const response = await apiRequest("GET", `/api/medicine-info/${encodeURIComponent(name)}`, undefined);
+  return response.json();
+}
+
+// Pharmacy APIs
+export async function getPharmacies(): Promise<Pharmacy[]> {
+  const response = await apiRequest("GET", `/api/pharmacies`, undefined);
+  return response.json();
+}
+
+export async function getPharmacy(id: number): Promise<Pharmacy> {
+  const response = await apiRequest("GET", `/api/pharmacies/${id}`, undefined);
+  return response.json();
+}
+
+export async function searchPharmacies(query: string, location?: { lat: number, lng: number }): Promise<Pharmacy[]> {
+  let url = `/api/pharmacies/search?q=${encodeURIComponent(query)}`;
+  if (location) {
+    url += `&lat=${location.lat}&lng=${location.lng}`;
+  }
+  const response = await apiRequest("GET", url, undefined);
+  return response.json();
+}
+
+// Pharmacy Order APIs
+export async function getPharmacyOrders(): Promise<PharmacyOrder[]> {
+  const response = await apiRequest("GET", `/api/pharmacy-orders`, undefined);
+  return response.json();
+}
+
+export async function getPharmacyOrder(id: number): Promise<PharmacyOrder> {
+  const response = await apiRequest("GET", `/api/pharmacy-orders/${id}`, undefined);
+  return response.json();
+}
+
+export async function createPharmacyOrder(order: Partial<PharmacyOrder>, items: Partial<PharmacyOrderItem>[]): Promise<PharmacyOrder> {
+  const response = await apiRequest("POST", `/api/pharmacy-orders`, { ...order, items });
+  return response.json();
+}
+
+export async function updatePharmacyOrderStatus(id: number, status: string, paymentStatus?: string): Promise<PharmacyOrder> {
+  const response = await apiRequest("PUT", `/api/pharmacy-orders/${id}/status`, { status, paymentStatus });
   return response.json();
 }

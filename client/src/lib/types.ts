@@ -66,6 +66,54 @@ export interface MedicineInfo {
   dosageInstructions?: string;
 }
 
+export interface Pharmacy {
+  id: number;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  phone: string;
+  email?: string;
+  latitude?: number;
+  longitude?: number;
+  hours?: string;
+  deliveryAvailable: boolean;
+  deliveryFee?: number;
+  minimumOrderAmount?: number;
+  estimatedDeliveryTime?: string;
+  rating?: number;
+  reviewCount?: number;
+}
+
+export interface PharmacyOrder {
+  id: number;
+  userId: number;
+  pharmacyId: number;
+  prescriptionId?: number;
+  orderDate: string;
+  status: 'pending' | 'confirmed' | 'processing' | 'out-for-delivery' | 'delivered' | 'cancelled';
+  deliveryAddress: string;
+  deliveryContact: string;
+  paymentMethod: string;
+  paymentStatus: 'pending' | 'paid' | 'failed';
+  totalAmount: number;
+  discount?: number;
+  deliveryFee: string;
+  notes?: string;
+  estimatedDeliveryTime?: string;
+  actualDeliveryTime?: string;
+}
+
+export interface PharmacyOrderItem {
+  id: number;
+  orderId: number;
+  medicationName: string;
+  quantity: number;
+  price: string;
+  substituteAllowed: boolean;
+}
+
 export interface OcrResult {
   patientInfo?: {
     name?: string;
