@@ -1,0 +1,302 @@
+ 1. User Onboarding Flow
+📱 App Installation & First Launch:
+
+Platform: Android, iOS, and PWA support.
+
+Splash Screen:
+
+Mediz logo + tagline (e.g., "Your Health, Our Priority") with smooth animation.
+
+Option to skip or watch intro video explaining core features.
+
+Language Selection:
+
+Multiple language options (English, Hindi, etc.)
+
+Default based on device language with option to change.
+
+User Registration & Login:
+
+📧 Email, 📱 Mobile number, or Google/Apple/Facebook login.
+
+OTP verification for mobile number validation.
+
+User Profile Setup:
+
+Name, DOB, gender, and location.
+
+Blood Group Selection → for urgent blood notifications.
+
+Health Conditions: (Diabetes, Hypertension, etc.) for personalized recommendations.
+
+Optional: Upload profile picture.
+
+Privacy & Permissions:
+
+Access to location, camera, gallery, and health data.
+
+T&C and Privacy Policy acceptance.
+
+🌐 2. Home Screen & Dashboard
+📊 Home Screen Layout:
+
+Health Summary:
+
+Latest reports summary (X-ray, MRI, blood test, etc.)
+
+Medication schedule for the day.
+
+Diet & yoga recommendations.
+
+Quick Actions:
+
+📤 Share Report (one-click sharing).
+
+🩸 Blood Request Alerts.
+
+🆘 Emergency SOS button.
+
+User Profile Icon:
+
+Access profile, settings, and history.
+
+Dark Mode Toggle:
+
+For easy switching between light and dark mode.
+
+🔍 3. Core Features Flow
+🩺 3.1 Prescription Translation
+Input Methods:
+
+📸 Upload photo or take a live picture of the prescription.
+
+🗣️ Voice-to-text support for spoken instructions.
+
+OCR & NLP Processing:
+
+Extracts handwritten text.
+
+Detects medical terms accurately.
+
+Translation Output:
+
+Converts text into selected language.
+
+Displays structured prescription with medication names, dosage, and instructions.
+
+Share or Save option.
+
+💊 3.2 Medication Reminders
+Add Medication:
+
+User adds medicine name, dosage, frequency, and time.
+
+Optional: Add special instructions (before/after meals).
+
+Reminders & Notifications:
+
+Timely medicine reminders with sound/vibration alert.
+
+Missed Dose Alerts: Persistent reminders until user confirms.
+
+Smart Scheduling:
+
+Automatically adjusts reminders based on food timings.
+
+Refill Reminders: Notify user when medicine stock is low.
+
+🔍 3.3 Medicine Information
+Search & Scan:
+
+Search by medicine name or scan medicine barcode.
+
+Detailed Info:
+
+Uses, side effects, precautions, and dosage.
+
+Price Comparison: Online pharmacy price check.
+
+Generic Alternatives: Suggest cheaper substitutes.
+
+User Actions:
+
+Save medicine info to favorites.
+
+Share medicine details with others.
+
+📑 3.4 Medical Reports Overview
+Report Upload Options:
+
+📤 Upload PDF, image, or capture live photo.
+
+Multiple files upload at once.
+
+AI-Based Analysis:
+
+Auto-summary of the report.
+
+Highlight key findings (e.g., abnormal values).
+
+Visual Representation:
+
+📊 Graphs for blood sugar, cholesterol trends, etc.
+
+Color-coded insights (green = normal, red = abnormal).
+
+Report Actions:
+
+Share: Share report via WhatsApp, email, or QR code.
+
+Download: PDF export option.
+
+Archive: Store old reports securely in cloud storage.
+
+📤 3.5 One-Click Report Sharing
+Share Options:
+
+WhatsApp, Email, QR Code, and temporary links.
+
+Share with doctors, family, or friends.
+
+Secure Sharing:
+
+Encrypted links for privacy.
+
+Expiration feature: Temporary links auto-expire.
+
+🩸 3.6 Urgent Blood Request Notifications
+Real-Time Hospital Requests:
+
+App receives requests from hospitals.
+
+Location-based alerts → Only nearby users notified.
+
+Blood group-based targeting.
+
+User Notifications:
+
+Alert with hospital details, contact number, and urgency level.
+
+One-Click Call/Direction to hospital.
+
+🧠 3.7 Brain Tumor Detection
+Upload MRI/CT Scan:
+
+Users upload medical images.
+
+AI Analysis:
+
+Detects potential tumors.
+
+Highlights tumor location, size, and severity.
+
+Results:
+
+Visual heatmap with tumor boundaries.
+
+Risk level indicators (low, medium, high).
+
+Actions:
+
+Share results with doctors.
+
+Save in user profile.
+
+🥗 3.8 Diet & Yoga Recommendations
+Health Report Analysis:
+
+App uses health data to create personalized plans.
+
+Diet Recommendations:
+
+Custom meal plans based on health conditions.
+
+Calorie tracking with food image recognition.
+
+Yoga Suggestions:
+
+Yoga poses for specific issues (diabetes, back pain, etc.)
+
+Video guides for proper posture.
+
+🔥 4. Emergency & Blood Donation Flow
+🚑 4.1 Emergency SOS
+One-Click Emergency Button:
+
+Real-time location sharing with emergency contacts.
+
+Auto-dial nearest hospital or ambulance.
+
+Emergency Contacts:
+
+Add multiple emergency contacts.
+
+Instant SMS/Call alert with location link.
+
+🌐 5. Additional Features Flow
+📍 Nearby Clinics & Pharmacies
+Location Detection:
+
+Detects nearby hospitals, clinics, and pharmacies.
+
+Details Shown:
+
+Contact info, opening hours, and navigation.
+
+Book Appointments: Direct booking from app.
+
+Pharmacy Integration:
+
+Medicine delivery from nearby pharmacies.
+
+💾 Health Record Backup
+Cloud Sync:
+
+Auto-backup reports to cloud.
+
+Accessible from multiple devices.
+
+Export & Import:
+
+Export reports in PDF.
+
+Import old reports from gallery or cloud.
+
+🌙 Dark & Light Mode
+Auto Theme Switching:
+
+Day: Light mode, Night: Dark mode.
+
+Manual Toggle:
+
+Switch anytime from settings.
+
+🔐 Data Privacy & Security
+Encryption:
+
+AES-256 encryption for data security.
+
+Authentication:
+
+Face ID, fingerprint, or PIN for app lock.
+
+Data Sharing:
+
+User control over data sharing with third parties.
+
+🎯 6. User Settings & Profile Management
+Profile:
+
+Edit personal details.
+
+Manage emergency contacts.
+
+Settings:
+
+Language selection.
+
+Notification preferences.
+
+History & Logs:
+
+View shared reports and blood donation history.
