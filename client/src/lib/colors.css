@@ -1,43 +1,43 @@
 :root {
   /* Primary Colors */
-  --blue-primary: #2E86DE;
-  --green-primary: #10AC84;
+  --blue-primary: #3b82f6;
+  --green-primary: #22c55e;
   --white: #FFFFFF;
-  --yellow-accent: #FDCB6E;
+  --yellow-accent: #eab308;
   
   /* Secondary Colors */
-  --teal-secondary: #1ABC9C;
-  --red-alert: #E74C3C;
-  --orange-warning: #F39C12;
+  --teal-secondary: #14b8a6;
+  --red-alert: #ef4444;
+  --orange-warning: #f97316;
   
   /* Dark Mode Colors */
-  --dark-gray: #2C3E50;
-  --light-gray: #95A5A6;
-  --sky-blue: #3498DB;
+  --dark-gray: #1e293b;
+  --light-gray: #94a3b8;
+  --sky-blue: #0ea5e9;
   
   /* Gradients */
-  --blue-teal-gradient: linear-gradient(135deg, #2E86DE 0%, #1ABC9C 100%);
-  --pink-purple-gradient: linear-gradient(135deg, #FF6B6B 0%, #6A89CC 100%);
-  --red-orange-gradient: linear-gradient(135deg, #E74C3C 0%, #F39C12 100%);
+  --blue-teal-gradient: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
+  --pink-purple-gradient: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  --red-orange-gradient: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
   
   /* Text Colors */
-  --text-dark: #2C3E50;
+  --text-dark: #1e293b;
   --text-light: #FFFFFF;
-  --text-muted: #95A5A6;
+  --text-muted: #64748b;
   
   /* Background Colors */
-  --bg-light: #F8F9FA;
-  --bg-dark: #2C3E50;
+  --bg-light: #f8fafc;
+  --bg-dark: #1e293b;
   
   /* Semantic Colors */
-  --success: #10AC84;
-  --info: #3498DB;
-  --warning: #F39C12;
-  --danger: #E74C3C;
+  --success: #22c55e;
+  --info: #3b82f6;
+  --warning: #f97316;
+  --danger: #ef4444;
   
   /* Pill Colors (for medication types) */
-  --pill-antibiotic: #1ABC9C;
-  --pill-painkiller: #E74C3C;
-  --pill-vitamin: #F39C12;
-  --pill-generic: #95A5A6;
+  --pill-antibiotic: #14b8a6;
+  --pill-painkiller: #ef4444;
+  --pill-vitamin: #f97316;
+  --pill-generic: #64748b;
 }

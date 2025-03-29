@@ -99,43 +99,46 @@ const Home: FC = () => {
     <div className="min-h-screen relative pb-16">
       <Header />
       
-      <div className="pt-16 pb-2 bg-[var(--bg-light)] min-h-screen">
-        <div className="p-4">
-          {/* Welcome Section with Gradient Background */}
-          <div className="mb-6 p-4 rounded-xl gradient-blue-teal text-white">
-            <h2 className="text-xl font-bold mb-1">Welcome back, Rahul</h2>
-            <p className="text-white/90 text-sm">Manage your medications and prescriptions</p>
+      <div className="pt-16 pb-2 bg-white min-h-screen">
+        <div className="p-4 max-w-lg mx-auto">
+          {/* Welcome Section with Clean Design */}
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold mb-1 text-[var(--text-dark)]">Welcome back, Rahul</h2>
+            <p className="text-[var(--text-muted)] text-sm">Manage your medications and prescriptions</p>
           </div>
           
           {/* Quick Actions */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-8">
             <Link href="/scan">
-              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer card-hover">
-                <div className="bg-[var(--blue-primary)] bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+              <div className="bg-white border border-slate-200 p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+                <div className="bg-[var(--blue-primary)] bg-opacity-10 w-10 h-10 rounded-full flex items-center justify-center mb-3">
                   <Camera className="h-5 w-5 text-[var(--blue-primary)]" />
                 </div>
-                <h3 className="font-semibold text-[var(--text-dark)]">Scan Prescription</h3>
+                <h3 className="font-medium text-[var(--text-dark)]">Scan Prescription</h3>
                 <p className="text-xs text-[var(--text-muted)] mt-1">Upload a new prescription</p>
               </div>
             </Link>
             
             <Link href="/medications">
-              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer card-hover">
-                <div className="bg-[var(--green-primary)] bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+              <div className="bg-white border border-slate-200 p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-shadow">
+                <div className="bg-[var(--green-primary)] bg-opacity-10 w-10 h-10 rounded-full flex items-center justify-center mb-3">
                   <Pill className="h-5 w-5 text-[var(--green-primary)]" />
                 </div>
-                <h3 className="font-semibold text-[var(--text-dark)]">My Medications</h3>
+                <h3 className="font-medium text-[var(--text-dark)]">My Medications</h3>
                 <p className="text-xs text-[var(--text-muted)] mt-1">View & track medications</p>
               </div>
             </Link>
           </div>
           
           {/* Upcoming Medications */}
-          <div className="bg-white rounded-xl shadow-sm p-4 mb-6 border-l-4 border-l-[var(--green-primary)]">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 mb-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-[var(--text-dark)]">Upcoming Reminders</h3>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-[var(--green-primary)] rounded-full mr-2"></div>
+                <h3 className="font-medium text-[var(--text-dark)]">Upcoming Reminders</h3>
+              </div>
               <Link href="/reminders">
-                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:underline">View All</span>
+                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:text-blue-700">View All</span>
               </Link>
             </div>
             
@@ -162,18 +165,21 @@ const Home: FC = () => {
                 />
               ))
             ) : (
-              <div className="text-center py-6 text-[var(--text-muted)] bg-[var(--bg-light)] rounded-lg">
+              <div className="text-center py-4 text-[var(--text-muted)] bg-slate-50 rounded-md">
                 <p>No upcoming medication reminders</p>
               </div>
             )}
           </div>
           
           {/* Recent Prescriptions */}
-          <div className="bg-white rounded-xl shadow-sm p-4 border-l-4 border-l-[var(--blue-primary)]">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-[var(--text-dark)]">Recent Prescriptions</h3>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-[var(--blue-primary)] rounded-full mr-2"></div>
+                <h3 className="font-medium text-[var(--text-dark)]">Recent Prescriptions</h3>
+              </div>
               <Link href="/prescriptions">
-                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:underline">View All</span>
+                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:text-blue-700">View All</span>
               </Link>
             </div>
             
@@ -184,9 +190,9 @@ const Home: FC = () => {
               </div>
             ) : recentPrescriptions.length > 0 ? (
               recentPrescriptions.map((prescription: Prescription, index: number) => (
-                <div key={index} className="flex items-center border-b border-gray-100 pb-3 mb-3 last:mb-0 last:border-b-0 hover:bg-[var(--bg-light)] p-2 rounded-lg transition-colors">
-                  <div className="w-12 h-12 bg-[var(--blue-teal-gradient)] rounded-lg flex items-center justify-center mr-3 shadow-sm">
-                    <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div key={index} className="flex items-center border-b border-slate-100 pb-3 mb-3 last:mb-0 last:border-b-0 hover:bg-slate-50 p-2 rounded transition-colors">
+                  <div className="w-10 h-10 bg-slate-100 rounded-md flex items-center justify-center mr-3">
+                    <svg className="h-5 w-5 text-[var(--blue-primary)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                       <polyline points="14 2 14 8 20 8"></polyline>
                       <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -201,8 +207,8 @@ const Home: FC = () => {
                     </p>
                   </div>
                   <Link href={`/prescriptions/${prescription.id}`}>
-                    <div className="text-[var(--blue-primary)] cursor-pointer hover:bg-[var(--blue-primary)] hover:text-white p-2 rounded-full transition-colors">
-                      <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <div className="text-[var(--blue-primary)] cursor-pointer hover:bg-[var(--blue-primary)] hover:text-white p-1.5 rounded transition-colors">
+                      <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                       </svg>
                     </div>
@@ -210,7 +216,7 @@ const Home: FC = () => {
                 </div>
               ))
             ) : (
-              <div className="text-center py-6 text-[var(--text-muted)] bg-[var(--bg-light)] rounded-lg">
+              <div className="text-center py-4 text-[var(--text-muted)] bg-slate-50 rounded-md">
                 <p>No prescriptions uploaded yet</p>
               </div>
             )}

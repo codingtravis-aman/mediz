@@ -31,58 +31,58 @@ const PrescriptionCard: FC<PrescriptionCardProps> = ({
     switch (status.toLowerCase()) {
       case 'active':
       case 'completed':
-        return 'bg-[var(--success)] text-white';
+        return 'bg-emerald-100 text-emerald-800';
       case 'pending':
-        return 'bg-[var(--warning)] text-white';
+        return 'bg-amber-100 text-amber-800';
       case 'expired':
-        return 'bg-[var(--red-alert)] text-white';
+        return 'bg-rose-100 text-rose-800';
       default:
-        return 'bg-[var(--info)] text-white';
+        return 'bg-blue-100 text-blue-800';
     }
   };
 
   return (
-    <Card className="w-full card-hover border-t-4 border-t-[var(--blue-primary)]">
+    <Card className="w-full border border-slate-200 shadow-sm hover:shadow transition-shadow">
       <CardContent className="p-4">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="font-semibold text-[var(--text-dark)]">{prescription.title}</h3>
-          <span className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusBadgeClass(prescription.status)}`}>
+          <h3 className="font-medium text-slate-900">{prescription.title}</h3>
+          <span className={`text-xs px-2 py-0.5 rounded-full ${getStatusBadgeClass(prescription.status)}`}>
             {prescription.status}
           </span>
         </div>
-        <p className="text-xs text-[var(--text-muted)] mb-3 flex items-center">
-          <Calendar className="w-3.5 h-3.5 mr-1 text-[var(--blue-primary)]" />
+        <p className="text-xs text-slate-500 mb-3 flex items-center">
+          <Calendar className="w-3.5 h-3.5 mr-1 text-slate-400" />
           Uploaded on {formatDate(prescription.uploadDate)}
         </p>
         
         <div className="flex items-center text-sm space-x-4">
-          <div className="flex items-center text-[var(--text-dark)]">
-            <FileText className="w-4 h-4 mr-1 text-[var(--green-primary)]" />
-            <span>{prescription.medicationsCount} Medications</span>
+          <div className="flex items-center text-slate-700">
+            <FileText className="w-4 h-4 mr-1 text-blue-500" />
+            <span className="text-xs">{prescription.medicationsCount} Medications</span>
           </div>
           {prescription.source && (
-            <div className="flex items-center text-[var(--text-dark)]">
-              <Check className="w-4 h-4 mr-1 text-[var(--teal-secondary)]" />
-              <span>{prescription.source}</span>
+            <div className="flex items-center text-slate-700">
+              <Check className="w-4 h-4 mr-1 text-emerald-500" />
+              <span className="text-xs">{prescription.source}</span>
             </div>
           )}
         </div>
 
         {prescription.language && (
-          <div className="mt-3 px-3 py-2 bg-[var(--bg-light)] rounded-md">
+          <div className="mt-3 px-3 py-2 bg-slate-50 rounded border border-slate-100">
             <div className="text-xs flex items-center">
-              <span className="font-medium text-[var(--blue-primary)]">Language:</span>
-              <span className="ml-2">{prescription.language}</span>
+              <span className="font-medium text-slate-700">Language:</span>
+              <span className="ml-2 text-slate-600">{prescription.language}</span>
             </div>
           </div>
         )}
       </CardContent>
       
-      <CardFooter className="border-t border-gray-100 p-3 flex justify-between bg-[var(--bg-light)]">
+      <CardFooter className="border-t border-slate-100 p-2 flex justify-between bg-slate-50">
         <Button 
           variant="ghost" 
           size="sm" 
-          className="text-[var(--blue-primary)] flex items-center hover:bg-[var(--blue-primary)] hover:text-white"
+          className="text-slate-700 flex items-center hover:bg-blue-50 hover:text-blue-700"
           onClick={() => onView && onView(prescription.id)}
         >
           <Eye className="h-4 w-4 mr-1" /> View
@@ -90,7 +90,7 @@ const PrescriptionCard: FC<PrescriptionCardProps> = ({
         <Button 
           variant="ghost" 
           size="sm" 
-          className="text-[var(--green-primary)] flex items-center hover:bg-[var(--green-primary)] hover:text-white"
+          className="text-slate-700 flex items-center hover:bg-emerald-50 hover:text-emerald-700"
           onClick={() => onDownload && onDownload(prescription.id)}
         >
           <Download className="h-4 w-4 mr-1" /> Download
@@ -98,7 +98,7 @@ const PrescriptionCard: FC<PrescriptionCardProps> = ({
         <Button 
           variant="ghost" 
           size="sm" 
-          className="text-[var(--teal-secondary)] flex items-center hover:bg-[var(--teal-secondary)] hover:text-white"
+          className="text-slate-700 flex items-center hover:bg-violet-50 hover:text-violet-700"
           onClick={() => onShare && onShare(prescription.id)}
         >
           <Share className="h-4 w-4 mr-1" /> Share
