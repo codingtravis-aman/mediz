@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Camera, Pill } from 'lucide-react';
+import { Camera, Pill, Bell, FileText } from 'lucide-react';
 import Header from '@/components/layout/header';
 import BottomNavigation from '@/components/ui/bottom-navigation';
 import MedicationReminder from '@/components/medication/medication-reminder';
@@ -99,46 +99,55 @@ const Home: FC = () => {
     <div className="min-h-screen relative pb-16">
       <Header />
       
-      <div className="pt-16 pb-2 bg-white min-h-screen">
+      <div className="pt-16 pb-2 bg-gradient-to-br from-blue-50 to-white min-h-screen">
         <div className="p-4 max-w-lg mx-auto">
           {/* Welcome Section with Clean Design */}
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-1 text-[var(--text-dark)]">Welcome back, Rahul</h2>
-            <p className="text-[var(--text-muted)] text-sm">Manage your medications and prescriptions</p>
+          <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-blue-100">
+            <div className="flex items-center">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white mr-3">
+                <span className="text-xl font-bold">R</span>
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold mb-1 text-slate-800">Welcome back, Rahul</h2>
+                <p className="text-slate-500 text-sm">Manage your medications and prescriptions</p>
+              </div>
+            </div>
           </div>
           
           {/* Quick Actions */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             <Link href="/scan">
-              <div className="bg-white border border-slate-200 p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-shadow">
-                <div className="bg-[var(--blue-primary)] bg-opacity-10 w-10 h-10 rounded-full flex items-center justify-center mb-3">
-                  <Camera className="h-5 w-5 text-[var(--blue-primary)]" />
+              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow border-b-4 border-blue-500">
+                <div className="bg-blue-500 w-12 h-12 rounded-lg flex items-center justify-center mb-3 shadow-sm">
+                  <Camera className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-medium text-[var(--text-dark)]">Scan Prescription</h3>
-                <p className="text-xs text-[var(--text-muted)] mt-1">Upload a new prescription</p>
+                <h3 className="font-semibold text-slate-800 text-base">Scan Prescription</h3>
+                <p className="text-xs text-slate-500 mt-1">Upload a new prescription</p>
               </div>
             </Link>
             
             <Link href="/medications">
-              <div className="bg-white border border-slate-200 p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-shadow">
-                <div className="bg-[var(--green-primary)] bg-opacity-10 w-10 h-10 rounded-full flex items-center justify-center mb-3">
-                  <Pill className="h-5 w-5 text-[var(--green-primary)]" />
+              <div className="bg-white p-4 rounded-xl shadow-sm cursor-pointer hover:shadow-md transition-shadow border-b-4 border-emerald-500">
+                <div className="bg-emerald-500 w-12 h-12 rounded-lg flex items-center justify-center mb-3 shadow-sm">
+                  <Pill className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-medium text-[var(--text-dark)]">My Medications</h3>
-                <p className="text-xs text-[var(--text-muted)] mt-1">View & track medications</p>
+                <h3 className="font-semibold text-slate-800 text-base">My Medications</h3>
+                <p className="text-xs text-slate-500 mt-1">View & track medications</p>
               </div>
             </Link>
           </div>
           
           {/* Upcoming Medications */}
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4 mb-6">
+          <div className="bg-white rounded-xl shadow-sm p-5 mb-6 border-l-4 border-l-emerald-500">
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--green-primary)] rounded-full mr-2"></div>
-                <h3 className="font-medium text-[var(--text-dark)]">Upcoming Reminders</h3>
+                <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
+                  <Bell className="h-4 w-4 text-white" />
+                </div>
+                <h3 className="font-medium text-slate-800 text-lg">Upcoming Reminders</h3>
               </div>
               <Link href="/reminders">
-                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:text-blue-700">View All</span>
+                <span className="text-blue-600 text-sm font-medium cursor-pointer hover:bg-blue-50 px-3 py-1 rounded hover:underline">View All</span>
               </Link>
             </div>
             
@@ -165,21 +174,24 @@ const Home: FC = () => {
                 />
               ))
             ) : (
-              <div className="text-center py-4 text-[var(--text-muted)] bg-slate-50 rounded-md">
-                <p>No upcoming medication reminders</p>
+              <div className="text-center py-8 bg-slate-50 rounded-lg border border-slate-100">
+                <Bell className="h-10 w-10 text-slate-300 mx-auto mb-2" />
+                <p className="text-slate-500">No upcoming medication reminders</p>
               </div>
             )}
           </div>
           
           {/* Recent Prescriptions */}
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm p-4">
+          <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-l-blue-500">
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
-                <div className="w-2 h-2 bg-[var(--blue-primary)] rounded-full mr-2"></div>
-                <h3 className="font-medium text-[var(--text-dark)]">Recent Prescriptions</h3>
+                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
+                  <FileText className="h-4 w-4 text-white" />
+                </div>
+                <h3 className="font-medium text-slate-800 text-lg">Recent Prescriptions</h3>
               </div>
               <Link href="/prescriptions">
-                <span className="text-[var(--blue-primary)] text-sm font-medium cursor-pointer hover:text-blue-700">View All</span>
+                <span className="text-blue-600 text-sm font-medium cursor-pointer hover:bg-blue-50 px-3 py-1 rounded hover:underline">View All</span>
               </Link>
             </div>
             
@@ -190,9 +202,9 @@ const Home: FC = () => {
               </div>
             ) : recentPrescriptions.length > 0 ? (
               recentPrescriptions.map((prescription: Prescription, index: number) => (
-                <div key={index} className="flex items-center border-b border-slate-100 pb-3 mb-3 last:mb-0 last:border-b-0 hover:bg-slate-50 p-2 rounded transition-colors">
-                  <div className="w-10 h-10 bg-slate-100 rounded-md flex items-center justify-center mr-3">
-                    <svg className="h-5 w-5 text-[var(--blue-primary)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div key={index} className="flex items-center border-b border-slate-100 pb-3 mb-3 last:mb-0 last:border-b-0 hover:bg-slate-50 p-3 rounded-lg transition-colors">
+                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-3 shadow-sm">
+                    <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                       <polyline points="14 2 14 8 20 8"></polyline>
                       <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -201,13 +213,13 @@ const Home: FC = () => {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-medium text-[var(--text-dark)]">{prescription.title}</h4>
-                    <p className="text-xs text-[var(--text-muted)]">
+                    <h4 className="font-medium text-slate-800">{prescription.title}</h4>
+                    <p className="text-xs text-slate-500">
                       Uploaded {formatDistanceToNow(new Date(prescription.uploadDate), { addSuffix: true })}
                     </p>
                   </div>
                   <Link href={`/prescriptions/${prescription.id}`}>
-                    <div className="text-[var(--blue-primary)] cursor-pointer hover:bg-[var(--blue-primary)] hover:text-white p-1.5 rounded transition-colors">
+                    <div className="text-white cursor-pointer bg-blue-500 hover:bg-blue-600 p-2 rounded-lg transition-colors">
                       <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                       </svg>
@@ -216,8 +228,9 @@ const Home: FC = () => {
                 </div>
               ))
             ) : (
-              <div className="text-center py-4 text-[var(--text-muted)] bg-slate-50 rounded-md">
-                <p>No prescriptions uploaded yet</p>
+              <div className="text-center py-8 bg-slate-50 rounded-lg border border-slate-100">
+                <FileText className="h-10 w-10 text-slate-300 mx-auto mb-2" />
+                <p className="text-slate-500">No prescriptions uploaded yet</p>
               </div>
             )}
           </div>
