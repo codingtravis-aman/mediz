@@ -35,23 +35,4 @@ function App() {
 
 export default App;
 
-// Placeholder components (replace with your actual implementations)
-const Onboarding = () => {
-  const [completed, setCompleted] = React.useState(false)
-  const navigate = useLocation()[1]
-  const handleComplete = () => {
-    localStorage.setItem('mediz-onboarding-complete', 'true')
-    setCompleted(true)
-    navigate('/')
-  }
-
-  if(completed){
-    return <div>Onboarding Complete! Redirecting...</div>
-  }
-  return (
-    <div>
-      <h1>Onboarding</h1>
-      <button onClick={handleComplete}>Complete Onboarding</button>
-    </div>
-  );
-};
+// Onboarding component is imported from features/onboarding/splash-screen
