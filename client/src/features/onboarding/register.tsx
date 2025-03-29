@@ -16,6 +16,9 @@ const formSchema = z.object({
   username: z.string().min(3, {
     message: 'Username must be at least 3 characters',
   }),
+  fullName: z.string().min(2, {
+    message: 'Full name must be at least 2 characters',
+  }),
   password: z.string().min(6, {
     message: 'Password must be at least 6 characters',
   }),
@@ -37,13 +40,14 @@ const Register = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: '',
+      fullName: '',
       password: '',
       confirmPassword: '',
     },
   });
 
   const registerMutation = useMutation({
-    mutationFn: (values: { username: string; password: string }) => 
+    mutationFn: (values: { username: string; fullName: string; password: string }) => 
       apiRequest('POST', '/api/auth/register', values),
     onSuccess: () => {
       // Navigate to profile setup page after successful registration
@@ -59,8 +63,8 @@ const Register = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const { username, password } = values;
-    registerMutation.mutate({ username, password });
+    const { username, fullName, password } = values;
+    registerMutation.mutate({ username, fullName, password });
   };
 
   return (
@@ -88,6 +92,24 @@ const Register = () => {
                       <FormControl>
                         <Input 
                           placeholder="Enter your username" 
+                          {...field} 
+                          className="h-12 rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your full name" 
                           {...field} 
                           className="h-12 rounded-xl"
                         />
