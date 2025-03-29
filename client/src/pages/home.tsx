@@ -109,8 +109,8 @@ const Home: FC = () => {
                 <span className="text-xl font-extrabold">R</span>
               </div>
               <div>
-                <h2 className="text-xl font-bold mb-1 text-gray-800">नमस्ते, Rahul! 👋</h2>
-                <p className="text-gray-500 text-sm">आज का दिन स्वस्थ रहने के लिए शुभ है!</p>
+                <h2 className="text-xl font-bold mb-1 text-gray-800">Hi, Rahul! 👋</h2>
+                <p className="text-gray-500 text-sm">Today is a great day to stay healthy!</p>
               </div>
             </div>
             
@@ -120,8 +120,8 @@ const Home: FC = () => {
                   <Bell className="h-4 w-4" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-xs font-medium text-gray-900">आज की दवाओं की याद दिलाएँ</p>
-                  <p className="text-[10px] text-gray-500">आपके दिन के लिए 3 दवाएँ निर्धारित हैं</p>
+                  <p className="text-xs font-medium text-gray-900">Today's Medication Reminders</p>
+                  <p className="text-[10px] text-gray-500">You have 3 medications scheduled today</p>
                 </div>
               </div>
             </div>
@@ -135,8 +135,8 @@ const Home: FC = () => {
                 <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Camera className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-base">स्कैन करें</h3>
-                <p className="text-xs text-gray-500 mt-1">नुस्खे को स्कैन करके समझें</p>
+                <h3 className="font-bold text-gray-900 text-base">Scan Prescription</h3>
+                <p className="text-xs text-gray-500 mt-1">Upload & translate prescriptions</p>
               </div>
             </Link>
             
@@ -146,8 +146,8 @@ const Home: FC = () => {
                 <div className="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Pill className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-base">मेरी दवाएँ</h3>
-                <p className="text-xs text-gray-500 mt-1">अपनी दवाओं को देखें और ट्रैक करें</p>
+                <h3 className="font-bold text-gray-900 text-base">My Medications</h3>
+                <p className="text-xs text-gray-500 mt-1">View & track your medications</p>
               </div>
             </Link>
           </div>
@@ -161,13 +161,13 @@ const Home: FC = () => {
                   <Bell className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 text-lg">आज की याद दिलाएँ</h3>
-                  <p className="text-xs text-gray-500">अपनी दवाओं को ट्रैक करें</p>
+                  <h3 className="font-bold text-gray-800 text-lg">Today's Reminders</h3>
+                  <p className="text-xs text-gray-500">Track your daily medications</p>
                 </div>
               </div>
               <Link href="/reminders">
                 <div className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-medium cursor-pointer hover:shadow-lg transition-shadow">
-                  सभी देखें
+                  View All
                 </div>
               </Link>
             </div>
@@ -196,13 +196,13 @@ const Home: FC = () => {
                           onClick={() => handleMarkTaken(medication.id, index + 1)}
                           className="px-3 py-1.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg text-xs font-bold shadow-md hover:shadow-lg transition-shadow"
                         >
-                          लिया
+                          Taken
                         </button>
                         <button 
                           onClick={() => handleSkipMedication(medication.id, index + 1)}
                           className="px-3 py-1.5 bg-gray-200 text-gray-600 rounded-lg text-xs font-bold hover:bg-gray-300 transition-colors"
                         >
-                          छोड़ें
+                          Skip
                         </button>
                       </div>
                     </div>
@@ -210,7 +210,7 @@ const Home: FC = () => {
                       <div className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center mr-2">
                         <Bell className="h-3 w-3 text-amber-600" />
                       </div>
-                      <p className="text-xs text-amber-600 font-medium">अगला समय: 14:00 (2:00 PM)</p>
+                      <p className="text-xs text-amber-600 font-medium">Next time: 14:00 (2:00 PM)</p>
                     </div>
                   </div>
                 ))}
@@ -220,8 +220,8 @@ const Home: FC = () => {
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 flex items-center justify-center mb-3">
                   <Bell className="h-8 w-8 text-amber-400" />
                 </div>
-                <h4 className="font-bold text-gray-700 mb-1">कोई याद दिलाने वाला नहीं!</h4>
-                <p className="text-sm text-gray-500">आज के लिए कोई दवा अनुस्मारक नहीं है</p>
+                <h4 className="font-bold text-gray-700 mb-1">No Reminders!</h4>
+                <p className="text-sm text-gray-500">You have no medication reminders for today</p>
               </div>
             )}
           </div>
@@ -235,13 +235,13 @@ const Home: FC = () => {
                   <FileText className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 text-lg">हाल के नुस्खे</h3>
-                  <p className="text-xs text-gray-500">अपने स्कैन किए गए नुस्खे देखें</p>
+                  <h3 className="font-bold text-gray-800 text-lg">Recent Prescriptions</h3>
+                  <p className="text-xs text-gray-500">View your scanned prescriptions</p>
                 </div>
               </div>
               <Link href="/prescriptions">
                 <div className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-medium cursor-pointer hover:shadow-lg transition-shadow">
-                  सभी देखें
+                  View All
                 </div>
               </Link>
             </div>
@@ -265,7 +265,7 @@ const Home: FC = () => {
                           <div className="flex items-center mt-1">
                             <div className="flex-shrink-0 w-3 h-3 rounded-full bg-blue-500 mr-1"></div>
                             <p className="text-xs text-gray-500">
-                              {formatDistanceToNow(new Date(prescription.uploadDate), { addSuffix: true })} अपलोड किया गया
+                              Uploaded {formatDistanceToNow(new Date(prescription.uploadDate), { addSuffix: true })}
                             </p>
                           </div>
                         </div>
@@ -282,7 +282,7 @@ const Home: FC = () => {
                       <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mr-2 text-white">
                         <Pill className="h-3 w-3" />
                       </div>
-                      <p className="text-xs text-blue-600 font-medium">{prescription.medicationsCount} दवाएँ पाई गईं</p>
+                      <p className="text-xs text-blue-600 font-medium">{prescription.medicationsCount} medications found</p>
                     </div>
                   </div>
                 ))}
@@ -292,8 +292,8 @@ const Home: FC = () => {
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-3">
                   <FileText className="h-8 w-8 text-blue-400" />
                 </div>
-                <h4 className="font-bold text-gray-700 mb-1">कोई नुस्खा नहीं!</h4>
-                <p className="text-sm text-gray-500">अभी तक कोई नुस्खा अपलोड नहीं किया गया है</p>
+                <h4 className="font-bold text-gray-700 mb-1">No Prescriptions!</h4>
+                <p className="text-sm text-gray-500">You haven't uploaded any prescriptions yet</p>
               </div>
             )}
           </div>
