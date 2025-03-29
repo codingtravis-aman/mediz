@@ -1,4 +1,4 @@
-@import './lib/colors.css';
+@import './common/utils/colors.css';
 
 @tailwind base;
 @tailwind components;
