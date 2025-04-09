@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="48" fill="#2E86DE"/>
+  <path d="M54 96C54 72.3878 73.1355 53.25 96.75 53.25H138C142.142 53.25 145.5 56.6079 145.5 60.75V131.25C145.5 135.392 142.142 138.75 138 138.75H96.75C73.1355 138.75 54 119.612 54 96Z" fill="white"/>
+  <rect x="64.5" y="84" width="15" height="24" rx="3" fill="#2E86DE"/>
+  <rect x="88.5" y="84" width="15" height="24" rx="3" fill="#2E86DE"/>
+  <rect x="112.5" y="84" width="15" height="24" rx="3" fill="#2E86DE"/>
+  <path d="M80.25 68.25V64.5C80.25 63.6716 80.9216 63 81.75 63H86.25C87.0784 63 87.75 63.6716 87.75 64.5V68.25" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M104.25 68.25V64.5C104.25 63.6716 104.922 63 105.75 63H110.25C111.078 63 111.75 63.6716 111.75 64.5V68.25" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M128.25 68.25V64.5C128.25 63.6716 128.922 63 129.75 63H134.25C135.078 63 135.75 63.6716 135.75 64.5V68.25" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M107.25 120L120 105" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M71.25 120L84 105" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+</svg>
